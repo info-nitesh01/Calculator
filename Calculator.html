@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calculator</title>
+    <style>
+        body {
+            display: grid;
+            justify-content: center;
+            background-color: black;
+        }
+
+        #brdr {
+            background-color: grey;
+            border: 2px solid black;
+            height: 100%;
+            padding: 10px 10px;
+            display: grid;
+            justify-content: center;
+            border-radius: 10px;
+        }
+
+        input {
+            color: white;
+            font-weight: bold;
+        }
+
+        h3 {
+            color: white;
+        }
+
+        .btn {
+            border-color: black;
+            border-radius: 10px;
+            background-color: black;
+            height: 40px;
+            width: 40px;
+        }
+
+        .btn:hover {
+            border: 1px solid black;
+            box-shadow: 0px 2px 8px 2px black;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.449);
+        }
+
+
+        .txt {
+            color: black;
+            background-color: rgb(22, 240, 240);
+            border-radius: 5px;
+            height: 35px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="brdr">
+        <h3>Calculator</h3>
+        <table>
+            <tr>
+                <td colspan="3"><input class="txt" type="text" id="answer">
+                </td>
+                <td><input
+                        style="margin-bottom: 9.5px; border-color: rgb(106, 255, 106); background-color: rgb(106, 255, 106);"
+                        class="btn" type="button" value="c" onclick="clr()"></td>
+            </tr>
+            <tr>
+                <td><input class="btn" type="button" value="1" onclick="display('1')"></td>
+                <td><input class="btn" type="button" value="2" onclick="display('2')"></td>
+                <td><input class="btn" type="button" value="3" onclick="display('3')"></td>
+                <td><input class="btn" type="button" value="+" onclick="display('+')"></td>
+            </tr>
+            <tr>
+                <td><input class="btn" type="button" value="4" onclick="display('4')"></td>
+                <td><input class="btn" type="button" value="5" onclick="display('5')"></td>
+                <td><input class="btn" type="button" value="6" onclick="display('6')"></td>
+                <td><input class="btn" type="button" value="-" onclick="display('-')"></td>
+            </tr>
+            <tr>
+                <td><input class="btn" type="button" value="7" onclick="display('7')"></td>
+                <td><input class="btn" type="button" value="8" onclick="display('8')"></td>
+                <td><input class="btn" type="button" value="9" onclick="display('9')"></td>
+                <td><input class="btn" type="button" value="X" onclick="display('*')"></td>
+            </tr>
+            <tr>
+                <td><input class="btn" type="button" value="." onclick="display('.')"></td>
+                <td><input class="btn" type="button" value="0" onclick="display('0')"></td>
+                <td><input class="btn" style="color: red;" type="button" value="<=" onclick="backsp()"></td>
+                <td><input class="btn" type="button" value="/" onclick="display('/')"></td>
+            </tr>
+            <tr>
+                <td colspan="4"><input class="btn" type="button"
+                        style="width: 100%;margin-bottom: 10px; background-color: tomato; border-color: tomato;"
+                        value="=" onclick="equate()">
+                </td>
+            </tr>
+        </table>
+        <script>
+            clr = () => {
+                document.getElementById("answer").value = "";
+            }
+            display = (val) => {
+                document.getElementById("answer").value += val;
+            }
+            equate = () => {
+                let x = document.getElementById("answer").value;
+                let y = eval(x);
+                document.getElementById("answer").value = y;
+            }
+            backsp = () => {
+                var value = document.getElementById("answer").value;
+                document.getElementById("answer").value = value.substr(0, value.length - 1);
+            }
+        </script>
+    </form>
+</body>
+
+</html>
