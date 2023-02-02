@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>To-Do-List</title>
+    <style>
+        body {
+            background-color: tomato;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="row">To-Do-List</h1>
+        <br>
+        <div class="row">
+            <form>
+                <div class="input-group">
+                    <input type="text" placeholder="to-do-item" id="txt" style="width: 25vw;">
+                    <input type="button" value="Add" style="width: 10vw;" onclick="add_item()">
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <ul id="list_item"></ul>
+        </div>
+    </div>
+    <script>
+        add_item = () => {
+            let item = document.getElementById("txt");
+            let list_item = document.getElementById("list_item");
+            if (item.value != "") {
+                let make_li = document.createElement("li"); //create li tag
+                make_li.appendChild(document.createTextNode(item.value)); //add value to li tag added in txtbox
+                list_item.appendChild(make_li);
+
+                item.value = "";
+                make_li.onclick = function () {
+                    this.parentNode.removeChild(this);
+                }
+            }
+            else {
+                alert("Please add a value");
+            }
+
+        }
+    </script>
+</body>
+
+</html>
